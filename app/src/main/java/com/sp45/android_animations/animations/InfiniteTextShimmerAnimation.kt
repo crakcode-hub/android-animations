@@ -3,7 +3,6 @@ package com.sp45.android_animations.animations
 import androidx.compose.animation.core.EaseInOutBack
 import androidx.compose.animation.core.EaseInOutCirc
 import androidx.compose.animation.core.Easing
-import androidx.compose.animation.core.InfiniteTransition
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -33,7 +32,7 @@ fun InfiniteTextShimmerAnimation() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.Black)
             .padding(8.dp),
         verticalArrangement = Arrangement.SpaceAround,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -56,7 +55,11 @@ fun InfiniteTextShimmerAnimation() {
             style = TextStyle(
                 fontSize = fontSize
             ).textShimmerBrush(
-                shimmerColors = listOf(Color.Yellow, Color.Green, Color.Gray),
+                shimmerColors = listOf(
+                    Color.Black,
+                    Color.Green,
+                    Color.White
+                ),
                 animationDurationMillis = 1500,
                 easing = EaseInOutBack
             )
@@ -67,7 +70,10 @@ fun InfiniteTextShimmerAnimation() {
             style = TextStyle(
                 fontSize = fontSize
             ).textShimmerBrush(
-                shimmerColors = listOf(Color.Green, Color.Gray),
+                shimmerColors = listOf(
+                    Color.Black,
+                    Color.Green
+                ),
                 animationDurationMillis = 1200
             )
         )

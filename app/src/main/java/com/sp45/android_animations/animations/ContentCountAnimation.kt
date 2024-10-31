@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
@@ -41,8 +42,9 @@ fun ContentCountAnimation() {
             mutableStateOf(false)
         }
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
+            modifier = Modifier.fillMaxWidth().padding(20.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.Top
         ) {
             Button(
                 onClick = {
@@ -73,7 +75,7 @@ fun ContentCountAnimation() {
                 } else {
                     AnimatedContentTransitionScope.SlideDirection.Down
                 }
-                val animationTime = 800
+                val animationTime = 500
                 (
                     slideIntoContainer(
                         towards = towards,

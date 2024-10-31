@@ -6,8 +6,8 @@ import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.InfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,7 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.sp45.android_animations.R
 
 @Composable
 fun InfiniteValueAnimation() {
@@ -51,15 +53,24 @@ fun InfiniteValueAnimation() {
         )
 
         Box(
-            modifier = Modifier.fillMaxSize().clipToBounds(),
+            modifier = Modifier
+                .fillMaxSize()
+                .clipToBounds(),
             contentAlignment = Alignment.Center
         ) {
             Box(
                 modifier = Modifier
                     .size(200.dp)
                     .rotate(rotation)
-                    .background(color)
-            )
+                    .background(color),
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.crakcode),
+                    contentDescription = "",
+                    Modifier.size(200.dp)
+                )
+            }
         }
     }
 }

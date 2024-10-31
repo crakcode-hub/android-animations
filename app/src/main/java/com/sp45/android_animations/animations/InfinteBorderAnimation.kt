@@ -27,7 +27,6 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.unit.Dp
@@ -36,7 +35,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun InfiniteBorderAnimation() {
     Row(
-        modifier = Modifier.fillMaxSize().background(Color.LightGray),
+        modifier = Modifier.fillMaxSize().background(Color.Black),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceAround
     ) {
@@ -49,7 +48,7 @@ fun InfiniteBorderAnimation() {
                         Color.Green,
                         Color.White
                     ),
-                    backgroundColor = Color.LightGray,
+                    backgroundColor = Color.Black,
                     shape = RoundedCornerShape(100),
                     borderWidth = 4.dp,
                     animationDurationInMillis = 1750,
@@ -57,7 +56,6 @@ fun InfiniteBorderAnimation() {
                     easing = EaseInOutCirc
                 )
         ) {
-            // Some content here
         }
         Box(
             modifier = Modifier
@@ -68,13 +66,12 @@ fun InfiniteBorderAnimation() {
                         Color.Green,
                         Color.White
                     ),
-                    backgroundColor = Color.LightGray,
+                    backgroundColor = Color.Black,
                     shape = RoundedCornerShape(100),
                     borderWidth = 4.dp,
                     animationDurationInMillis = 1750
                 )
         ) {
-            // Some content here
         }
     }
 }
@@ -83,7 +80,7 @@ fun Modifier.animatedBorder(
     borderColors: List<Color>,
     backgroundColor: Color,
     shape: Shape = CircleShape,
-    borderWidth: Dp = 1.dp,
+    borderWidth: Dp = 3.dp,
     animationDurationInMillis: Int = 1000,
     laps: Int = 1,
     easing: Easing = LinearEasing
