@@ -1,5 +1,6 @@
 package com.sp45.android_animations
 
+import ConfettiButton
 import androidx.compose.runtime.Composable
 import com.sp45.android_animations.animations.BouncingBallAnimation
 import com.sp45.android_animations.animations.ContentAnimation
@@ -13,6 +14,7 @@ import com.sp45.android_animations.animations.SwipeToDeleteAnimation
 import com.sp45.android_animations.animations.ValueSpringAnimation
 import com.sp45.android_animations.animations.ValueTweenAnimation
 
+
 enum class AnimationScreens {
     ValueTweenAnimation,
     ValueSpringAnimation,
@@ -24,6 +26,7 @@ enum class AnimationScreens {
     ExpandableCardAnimation,
     ContentCountAnimation,
     BouncingBallAnimation,
+    ConfettiAnimation,
     SwipeToDeleteAnimation;
 
     @Composable
@@ -40,6 +43,7 @@ enum class AnimationScreens {
             ExpandableCardAnimation -> ExpandableCardAnimation()
             ContentCountAnimation -> ContentCountAnimation()
             SwipeToDeleteAnimation -> SwipeToDeleteAnimation()
+            ConfettiAnimation -> ConfettiButton()
         }
     }
 }
