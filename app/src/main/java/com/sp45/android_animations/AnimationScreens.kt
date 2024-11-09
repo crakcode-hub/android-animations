@@ -7,13 +7,13 @@ import com.sp45.android_animations.animations.ContentAnimation
 import com.sp45.android_animations.animations.ContentCountAnimation
 import com.sp45.android_animations.animations.ExpandableCardAnimation
 import com.sp45.android_animations.animations.FadeInTextAnimation
+import com.sp45.android_animations.animations.FlipCard
 import com.sp45.android_animations.animations.InfiniteBorderAnimation
 import com.sp45.android_animations.animations.InfiniteTextShimmerAnimation
 import com.sp45.android_animations.animations.InfiniteValueAnimation
 import com.sp45.android_animations.animations.SwipeToDeleteAnimation
 import com.sp45.android_animations.animations.ValueSpringAnimation
 import com.sp45.android_animations.animations.ValueTweenAnimation
-
 
 enum class AnimationScreens {
     ValueTweenAnimation,
@@ -27,6 +27,7 @@ enum class AnimationScreens {
     ContentCountAnimation,
     BouncingBallAnimation,
     ConfettiAnimation,
+    CardFlippingAnimation,
     SwipeToDeleteAnimation;
 
     @Composable
@@ -44,6 +45,7 @@ enum class AnimationScreens {
             ContentCountAnimation -> ContentCountAnimation()
             SwipeToDeleteAnimation -> SwipeToDeleteAnimation()
             ConfettiAnimation -> ConfettiButton()
+            CardFlippingAnimation -> FlipCard()
         }
     }
 }
