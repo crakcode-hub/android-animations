@@ -1,7 +1,7 @@
 package com.sp45.android_animations
 
-import ConfettiButton
 import androidx.compose.runtime.Composable
+import com.sp45.android_animations.animations.BirthdayPopperAnimation
 import com.sp45.android_animations.animations.BouncingBallAnimation
 import com.sp45.android_animations.animations.ContentAnimation
 import com.sp45.android_animations.animations.ContentCountAnimation
@@ -44,7 +44,7 @@ enum class AnimationScreens {
             ExpandableCardAnimation -> ExpandableCardAnimation()
             ContentCountAnimation -> ContentCountAnimation()
             SwipeToDeleteAnimation -> SwipeToDeleteAnimation()
-            ConfettiAnimation -> ConfettiButton()
+            ConfettiAnimation -> BirthdayPopperAnimation()
             CardFlippingAnimation -> FlipCard()
         }
     }
