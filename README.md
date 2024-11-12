@@ -48,28 +48,8 @@
     </td>
     <td align="center">
       <div>
-        <img src="animation5-preview.gif" alt="Animation 3" width="300" height="300" />
-        <p>Animation 3</p>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <div>
         <img src="https://github.com/user-attachments/assets/99d9d823-4f12-4d03-8e08-7fedb04e92ad" alt="Bouncing ball" width="400" height="300" />
         <p>Bouncing ball</p>
-      </div>
-    </td>
-    <td align="center">
-      <div>
-        <img src="animation5-preview.gif" alt="Animation 5" width="150" height="150" />
-        <p>Animation 5</p>
-      </div>
-    </td>
-    <td align="center">
-      <div>
-        <img src="animation6-preview.gif" alt="Animation 6" width="150" height="150" />
-        <p>Animation 6</p>
       </div>
     </td>
   </tr>
@@ -117,15 +97,16 @@
 </p>
 
 ## Contributors
-
-<p align = "center">
+<p>
+Join us to make this project even better. Happy Animating! 🎉
+</p>
+<p>
   <a href="https://github.com/crakcode-hub/android-animations/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=crakcode-hub/android-animations" alt="Contributors"/>
   </a>
 </p>
 
-<p align="center">
-Join us to make this project even better. Happy Animating! 🎉
-</p>
+<!-- CONTRIBUTORS-LIST:START -->
+<!-- CONTRIBUTORS-LIST:END -->
 
 <p align="center">Built with 💚 by CrakCode</p>
