@@ -1,0 +1,42 @@
+name: Update Contributors
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight (optional)
+
+jobs:
+  update-contributors:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Generate contributors list
+        run: |
+          echo "" > CONTRIBUTORS_LIST.md
+          contributors=$(git log --format='%aN' | sort -u)
+          for contributor in $contributors; do
+            # Fetch GitHub username using GitHub API (requires API token if private)
+            username=$(curl -s "https://api.github.com/search/users?q=${contributor}" | jq -r '.items[0].login')
+            if [ "$username" != "null" ]; then
+              echo "<a href=\"https://github.com/$username\"><img src=\"https://github.com/$username.png\" width=\"50\" alt=\"$username\"/></a>" >> CONTRIBUTORS_LIST.md
+            fi
+          done
+
+      - name: Update README with Contributors
+        run: |
+          sed -i '/<!-- CONTRIBUTORS-LIST:START -->/,/<!-- CONTRIBUTORS-LIST:END -->/{//!d}' README.md
+          sed -i '/<!-- CONTRIBUTORS-LIST:START -->/r CONTRIBUTORS_LIST.md' README.md
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md CONTRIBUTORS_LIST.md
+          git commit -m "Update contributors section"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
