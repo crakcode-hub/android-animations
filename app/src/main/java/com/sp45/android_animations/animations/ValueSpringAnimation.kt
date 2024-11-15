@@ -23,8 +23,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.sp45.android_animations.R
 
 @Composable
 fun ValueSpringAnimation() {
@@ -33,7 +35,7 @@ fun ValueSpringAnimation() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         var sliderPosition by remember { mutableFloatStateOf(0f) }
-        var roundnessPercent by remember { mutableFloatStateOf(0f)}
+        var roundnessPercent by remember { mutableFloatStateOf(0f) }
 
         Column(
             modifier = Modifier
@@ -47,14 +49,23 @@ fun ValueSpringAnimation() {
                 valueRange = 0f..300f,
                 steps = 5
             )
-            Text(text = "Dynamic Circle of size : ${sliderPosition.toInt()}.dp", color = Color.White, fontWeight = FontWeight.Bold)
+            Text(
+                text = stringResource(R.string.dynamic_circle_of_size_dp, sliderPosition.toInt()),
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            )
             Slider(
                 value = roundnessPercent,
                 onValueChange = { roundnessPercent = it },
                 valueRange = 0f..100f,
                 steps = 5
             )
-            Text(text = "Dynamic Circle of roundness : ${roundnessPercent.toInt()} %", color = Color.White, fontWeight = FontWeight.Bold)
+            Text(
+                text = stringResource(
+                    R.string.dynamic_circle_of_roundness,
+                    roundnessPercent.toInt()
+                ), color = Color.White, fontWeight = FontWeight.Bold
+            )
         }
 
         val sliderSize by animateDpAsState(
@@ -66,13 +77,13 @@ fun ValueSpringAnimation() {
             )
         )
 
-        val color by animateColorAsState(
+        val color: Color by animateColorAsState(
             targetValue = when {
                 sliderPosition < 100f -> Color.Green
                 sliderPosition < 200f -> Color.Yellow
                 else -> Color.Red
             },
-            label = "Color Animation"
+            label = stringResource(R.string.color_animation)
         )
 
         Box(
@@ -86,7 +97,7 @@ fun ValueSpringAnimation() {
                     .clip(RoundedCornerShape(roundnessDp.dp))
                     .background(color),
                 contentAlignment = Alignment.Center
-            ){
+            ) {
 
             }
         }
