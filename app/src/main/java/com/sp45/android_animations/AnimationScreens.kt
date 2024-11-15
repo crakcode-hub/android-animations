@@ -1,6 +1,7 @@
 package com.sp45.android_animations
 
 import androidx.compose.runtime.Composable
+import com.sp45.android_animations.animations.AutoImageCarousel
 import com.sp45.android_animations.animations.BirthdayPopperAnimation
 import com.sp45.android_animations.animations.BouncingBallAnimation
 import com.sp45.android_animations.animations.ButtonToImage
@@ -30,6 +31,7 @@ enum class AnimationScreens {
     ConfettiAnimation,
     CardFlippingAnimation,
     ButtonToImageAnimation,
+    AutoImageAnimation,
     SwipeToDeleteAnimation;
 
     @Composable
@@ -49,6 +51,7 @@ enum class AnimationScreens {
             ConfettiAnimation -> BirthdayPopperAnimation()
             CardFlippingAnimation -> FlipCard()
             ButtonToImageAnimation -> ButtonToImage()
+            AutoImageAnimation -> AutoImageCarousel()
         }
     }
 }
