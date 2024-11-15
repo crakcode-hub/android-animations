@@ -1,4 +1,6 @@
 [versions]
+accompanistSwiperefresh = "<version>"
+accompanistSwiperefreshVersion = "0.31.5-beta"
 agp = "8.7.0"
 coreSplashscreen = "1.0.1"
 kotlin = "2.0.0"
@@ -13,6 +15,8 @@ navigationCompose = "2.8.3"
 uiTextGoogleFonts = "1.7.4"
 
 [libraries]
+accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwiperefresh" }
+accompanist-swiperefresh-v0315beta = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwiperefreshVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }

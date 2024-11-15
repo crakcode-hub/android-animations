@@ -9,7 +9,7 @@ import com.sp45.android_animations.animations.ContentAnimation
 import com.sp45.android_animations.animations.ContentCountAnimation
 import com.sp45.android_animations.animations.ExpandableCardAnimation
 import com.sp45.android_animations.animations.FadeInTextAnimation
-import com.sp45.android_animations.animations.FlipCard
+import com.sp45.android_animations.animations.FlipAnimation
 import com.sp45.android_animations.animations.InfiniteBorderAnimation
 import com.sp45.android_animations.animations.InfiniteTextShimmerAnimation
 import com.sp45.android_animations.animations.InfiniteValueAnimation
@@ -49,7 +49,7 @@ enum class AnimationScreens {
             ContentCountAnimation -> ContentCountAnimation()
             SwipeToDeleteAnimation -> SwipeToDeleteAnimation()
             ConfettiAnimation -> BirthdayPopperAnimation()
-            CardFlippingAnimation -> FlipCard()
+            CardFlippingAnimation -> FlipAnimation()
             ButtonToImageAnimation -> ButtonToImage()
             AutoImageAnimation -> AutoImageCarousel()
         }
