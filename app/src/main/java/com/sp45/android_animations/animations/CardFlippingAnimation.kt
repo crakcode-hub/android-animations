@@ -19,9 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sp45.android_animations.R
 import kotlinx.coroutines.delay
 
 @Composable
@@ -66,7 +68,7 @@ fun FlipCard() {
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Front",
+                            text = stringResource(R.string.front),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.White
@@ -88,7 +90,7 @@ fun FlipCard() {
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Back",
+                            text = stringResource(R.string.back),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.White

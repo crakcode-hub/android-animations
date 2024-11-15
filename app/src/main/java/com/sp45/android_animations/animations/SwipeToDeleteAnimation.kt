@@ -48,8 +48,10 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.sp45.android_animations.R
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -94,11 +96,11 @@ fun SwipeToDeleteAnimation() {
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Refresh,
-                    contentDescription = "Undo",
+                    contentDescription = stringResource(R.string.undo),
                     modifier = Modifier.size(16.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Undo")
+                Text(stringResource(R.string.undo))
             }
         }
     }
@@ -139,7 +141,7 @@ fun SwipeAbleCard(
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Delete,
-                    contentDescription = "Delete",
+                    contentDescription = stringResource(R.string.delete),
                     tint = swipeIconColor,
                     modifier = Modifier
                         .size(24.dp)
@@ -147,7 +149,7 @@ fun SwipeAbleCard(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Delete",
+                    text = stringResource(R.string.delete),
                     color = swipeIconColor,
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.alpha(swipeProgress)
@@ -213,12 +215,12 @@ fun SwipeAbleCard(
             ) {
                 Column {
                     Text(
-                        text = "Swipe to Delete",
+                        text = stringResource(R.string.swipe_to_delete),
                         style = MaterialTheme.typography.titleMedium,
                         color = cardTextColor
                     )
                     Text(
-                        text = "Slide left to remove this item",
+                        text = stringResource(R.string.slide_left_to_remove_this_item),
                         style = MaterialTheme.typography.bodyMedium,
                         color = cardTextColor.copy(alpha = 0.7f),
                         modifier = Modifier.padding(top = 4.dp)
@@ -226,7 +228,7 @@ fun SwipeAbleCard(
                 }
                 Icon(
                     imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowLeft,
-                    contentDescription = "Swipe left",
+                    contentDescription = stringResource(R.string.swipe_left),
                     tint = cardTextColor.copy(alpha = 0.7f),
                     modifier = Modifier.size(24.dp)
                 )

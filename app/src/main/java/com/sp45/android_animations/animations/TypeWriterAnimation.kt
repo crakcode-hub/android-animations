@@ -17,10 +17,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sp45.android_animations.R
 import kotlinx.coroutines.delay
 
 @Composable
@@ -28,7 +30,7 @@ fun TypeWriterAnimation() {
     Box( modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center){
         TypeWriterComponent(
-            text = "Type Writer Animation!",
+            text = stringResource(R.string.type_writer_animation),
             textStyle = TextStyle(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,

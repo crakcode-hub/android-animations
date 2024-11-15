@@ -21,8 +21,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.translate
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sp45.android_animations.R
 
 @Composable
 fun WaveLoadingBar() {
@@ -52,7 +54,7 @@ fun WaveLoadingBar() {
         }
 
         Text(
-            text = "Loading...",
+            text = stringResource(R.string.loading),
             fontSize = 20.sp,
             color = Color.White
         )

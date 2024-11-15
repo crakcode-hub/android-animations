@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sp45.android_animations.R
 
@@ -45,7 +46,7 @@ fun ContentAnimation() {
 
         ) {
         Button(onClick = { isPictureOne = !isPictureOne }) {
-            Text("Change Profile Picture")
+            Text(stringResource(R.string.change_profile_picture))
         }
         Spacer(modifier = Modifier.height(16.dp))
         AnimatedContent(

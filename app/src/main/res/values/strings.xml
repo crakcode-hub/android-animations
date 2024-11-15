@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">android-animations</string>
+    <string name="app_name">Android Animations</string>
+    <string name="front">Front</string>
+    <string name="back">Back</string>
+    <string name="pop">Pop!</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
+    <string name="swipe_up_to_collapse">Swipe Up to Collapse</string>
+    <string name="swipe_down_to_expand">Swipe Down to Expand</string>
+    <string name="undo">Undo</string>
+    <string name="delete">Delete</string>
+    <string name="swipe_to_delete">Swipe to Delete</string>
+    <string name="slide_left_to_remove_this_item">Slide left to remove this item</string>
+    <string name="swipe_left">Swipe left</string>
+    <string name="type_writer_animation">Type Writer Animation!</string>
+    <string name="dynamic_circle_of_size_dp">Dynamic Circle of size : %1$s.dp</string>
+    <string name="dynamic_circle_of_roundness">Dynamic Circle of roundness : %1$s %</string>
+    <string name="color_animation">Color Animation</string>
+    <string name="loading">Loading...</string>
 </resources>
