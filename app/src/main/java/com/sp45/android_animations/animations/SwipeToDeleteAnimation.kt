@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -45,6 +46,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -57,8 +59,8 @@ fun SwipeToDeleteAnimation() {
     var showUndo by remember { mutableStateOf(false) }
 
     Box(
-        modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.TopCenter
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
         if (cardVisible) {
             SwipeAbleCard(
@@ -111,10 +113,10 @@ fun SwipeAbleCard(
     val offsetX = remember { Animatable(0f) }
     val dismissThreshold = 300f
 
-    val errorColor = MaterialTheme.colorScheme.error
-    val onErrorColor = MaterialTheme.colorScheme.onError
-    val surfaceColor = MaterialTheme.colorScheme.surfaceContainer
-    val onSurfaceColor = MaterialTheme.colorScheme.onSurface
+    val swipeBackgroundColor = Color(0xFFB71C1C)
+    val swipeIconColor = Color.White
+    val cardContainerColor = Color(0xFFF5F5F5)
+    val cardTextColor = Color.Black
 
     val swipeProgress by remember(offsetX.value) {
         mutableFloatStateOf((-offsetX.value / dismissThreshold).coerceIn(0f, 1f))
@@ -128,7 +130,7 @@ fun SwipeAbleCard(
         Box(
             modifier = Modifier
                 .matchParentSize()
-                .background(errorColor.copy(alpha = 0.9f * swipeProgress)),
+                .background(swipeBackgroundColor.copy(alpha = 0.9f * swipeProgress)),
             contentAlignment = Alignment.CenterEnd
         ) {
             Row(
@@ -138,7 +140,7 @@ fun SwipeAbleCard(
                 Icon(
                     imageVector = Icons.Rounded.Delete,
                     contentDescription = "Delete",
-                    tint = onErrorColor,
+                    tint = swipeIconColor,
                     modifier = Modifier
                         .size(24.dp)
                         .alpha(swipeProgress)
@@ -146,12 +148,13 @@ fun SwipeAbleCard(
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "Delete",
-                    color = onErrorColor,
+                    color = swipeIconColor,
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.alpha(swipeProgress)
                 )
             }
         }
+
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -194,7 +197,7 @@ fun SwipeAbleCard(
                     )
                 },
             colors = CardDefaults.cardColors(
-                containerColor = surfaceColor
+                containerColor = cardContainerColor
             ),
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 4.dp,
@@ -212,19 +215,19 @@ fun SwipeAbleCard(
                     Text(
                         text = "Swipe to Delete",
                         style = MaterialTheme.typography.titleMedium,
-                        color = onSurfaceColor
+                        color = cardTextColor
                     )
                     Text(
                         text = "Slide left to remove this item",
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = cardTextColor.copy(alpha = 0.7f),
                         modifier = Modifier.padding(top = 4.dp)
                     )
                 }
                 Icon(
                     imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowLeft,
                     contentDescription = "Swipe left",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    tint = cardTextColor.copy(alpha = 0.7f),
                     modifier = Modifier.size(24.dp)
                 )
             }

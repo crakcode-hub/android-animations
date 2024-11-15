@@ -51,11 +51,7 @@ fun ExpandableCardAnimation() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(
-                    Brush.verticalGradient(
-                        colors = listOf(Color(0xFF004d00), Color(0xFF1E1E1E))
-                    )
-                )
+                .background(Color.White)
                 .padding(16.dp)
                 .clip(RoundedCornerShape(24.dp)),
             contentAlignment = Alignment.Center
@@ -65,7 +61,7 @@ fun ExpandableCardAnimation() {
                 fontSize = if (expanded) 20.sp else 18.sp,
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.bodyLarge,
-                color = Color.White
+                color = Color.Black
             )
         }
     }

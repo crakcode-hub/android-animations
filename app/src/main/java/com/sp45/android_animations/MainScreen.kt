@@ -1,120 +1,189 @@
 package com.sp45.android_animations
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsHoveredAsState
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-
-const val MainScreenName = "Android-Animations"
+import androidx.navigation.NavController
 
 @Composable
-fun MainScreen(
-    goToScreen: (AnimationScreens) -> Unit
-) {
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(8.dp)
+fun MainScreen(navController: NavController) {
+    val animations = listOf(
+        AnimationItem("Swipe To Delete Animation", Color(0xFF6200EE)),
+        AnimationItem("Bouncing Ball Animation", Color(0xFF03DAC5)),
+        AnimationItem("Value Spring Animation", Color(0xFF00BCD4)),
+        AnimationItem("Content Animation", Color(0xFFFFEB3B)),
+        AnimationItem("Carousel Slider", Color(0xFF3F51B5)),
+        AnimationItem("Expandable Card Animation", Color(0xFF4CAF50)),
+        AnimationItem("Wave Loading Bar", Color(0xFFFF9800)),
+        AnimationItem("Confetti Animation", Color(0xFF9C27B0)),
+        AnimationItem("Flip Card", Color(0xFF2196F3)),
+        AnimationItem("Floating Elements", Color(0xFFE91E63)),
+        AnimationItem("Type Writer Animation", Color(0xFF4CAF50)),
+        AnimationItem("Emoji Progress Bar", Color(0xFF3F51B5))
+    )
+
+    Box(
+        modifier = Modifier.fillMaxSize()
     ) {
-        items(AnimationScreens.entries.toTypedArray()) { animation ->
-            GoToAnimationCard(
-                name = animation.name,
-                goToScreen = { goToScreen(animation) }
-            )
+        LazyColumn(
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.fillMaxSize()
+        ) {
+            items(animations.size) { index ->
+                AnimationCard(
+                    animationItem = animations[index],
+                    onClick = {
+                        val route =
+                            NavigationDestinations.createAnimationRoute(animations[index].name)
+                        navController.navigate(route)
+                    }
+                )
+            }
         }
     }
 }
 
-@Preview(showSystemUi = true, showBackground = true)
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun Preview() {
-    GoToAnimationCard(
-        name = "animation",
-        goToScreen = TODO()
-    )
-}
+fun AnimationCard(
+    animationItem: AnimationItem,
+    onClick: () -> Unit
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isHovered by interactionSource.collectIsHoveredAsState()
 
-@Composable
-fun GoToAnimationCard(name: String, goToScreen: () -> Unit) {
+    var isPressed by remember { mutableStateOf(false) }
+
+    val elevation by animateFloatAsState(
+        targetValue = when {
+            isPressed -> 2f
+            isHovered -> 8f
+            else -> 4f
+        }
+    )
+
+    val scale by animateFloatAsState(
+        targetValue = if (isHovered) 1.02f else 1f
+    )
+
+    val accentColor = animationItem.color
+
     Card(
-        onClick = { goToScreen() },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.LightGray
-        )
+            .graphicsLayer {
+                scaleX = scale
+                scaleY = scale
+                shadowElevation = elevation
+            }
+            .pointerInteropFilter {
+                when (it.action) {
+                    android.view.MotionEvent.ACTION_DOWN -> isPressed = true
+                    android.view.MotionEvent.ACTION_UP -> isPressed = false
+                    android.view.MotionEvent.ACTION_CANCEL -> isPressed = false
+                }
+                false
+            }
+            .clickable(
+                interactionSource = interactionSource,
+                indication = rememberRipple(bounded = true),
+                onClick = onClick
+            )
+            .animateContentSize(),
+        shape = RoundedCornerShape(16.dp)
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(70.dp),
-            contentAlignment = Alignment.Center
+                .drawBehind {
+                    // Draw decorative background patterns
+                    rotate(45f) {
+                        drawCircle(
+                            color = accentColor.copy(alpha = 0.1f),
+                            radius = size.width * 0.2f,
+                            center = Offset(size.width * 0.8f, size.height * 0.2f)
+                        )
+                    }
+                }
+                .padding(16.dp)
         ) {
-            Text(
-                text = name,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
-                style = MaterialTheme.typography.bodyLarge,
-                color = Color.Black
-            )
-        }
-    }
-}
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    Text(
+                        text = animationItem.name,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "Tap to preview",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                    )
+                }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MainAppBar(
-    currentScreen: String,
-    canNavigateBack: Boolean,
-    navigateBack: () -> Unit
-) {
-    TopAppBar(
-        title = {
-            Text(
-                currentScreen,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
-            )
-        },
-        colors = TopAppBarDefaults.mediumTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        ),
-        navigationIcon = {
-            if (canNavigateBack) {
-                IconButton(onClick = navigateBack) {
+                IconButton(
+                    onClick = onClick,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(accentColor.copy(alpha = 0.1f))
+                ) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = null
+                        imageVector = Icons.Default.PlayArrow,
+                        contentDescription = "Play Animation",
+                        tint = accentColor
                     )
                 }
             }
         }
-    )
+    }
 }
+
+data class AnimationItem(
+    val name: String,
+    val color: Color
+)
