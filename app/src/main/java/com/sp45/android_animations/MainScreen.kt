@@ -1,7 +1,13 @@
 package com.sp45.android_animations
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -27,6 +33,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -93,6 +100,7 @@ fun AnimationCard(
     val isHovered by interactionSource.collectIsHoveredAsState()
 
     var isPressed by remember { mutableStateOf(false) }
+    var isVisible by remember { mutableStateOf(false ) }
 
     val elevation by animateFloatAsState(
         targetValue = when {
@@ -108,75 +116,92 @@ fun AnimationCard(
 
     val accentColor = animationItem.color
 
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .graphicsLayer {
-                scaleX = scale
-                scaleY = scale
-                shadowElevation = elevation
-            }
-            .pointerInteropFilter {
-                when (it.action) {
-                    android.view.MotionEvent.ACTION_DOWN -> isPressed = true
-                    android.view.MotionEvent.ACTION_UP -> isPressed = false
-                    android.view.MotionEvent.ACTION_CANCEL -> isPressed = false
-                }
-                false
-            }
-            .clickable(
-                interactionSource = interactionSource,
-                indication = rememberRipple(bounded = true),
-                onClick = onClick
-            )
-            .animateContentSize(),
-        shape = RoundedCornerShape(16.dp)
+    LaunchedEffect(Unit) {
+        isVisible = true
+    }
+
+    AnimatedVisibility(
+        visible = isVisible,
+        enter = fadeIn(
+            animationSpec = tween(500)
+        ) + scaleIn(
+            animationSpec = tween(500)
+        ),
+        exit = fadeOut(
+            animationSpec = tween(500)
+        ) + scaleOut(
+            animationSpec = tween(500)
+        )
     ) {
-        Box(
+        Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .drawBehind {
-                    // Draw decorative background patterns
-                    rotate(45f) {
-                        drawCircle(
-                            color = accentColor.copy(alpha = 0.1f),
-                            radius = size.width * 0.2f,
-                            center = Offset(size.width * 0.8f, size.height * 0.2f)
+                .graphicsLayer {
+                    scaleX = scale
+                    scaleY = scale
+                    shadowElevation = elevation
+                }
+                .pointerInteropFilter {
+                    when (it.action) {
+                        android.view.MotionEvent.ACTION_DOWN -> isPressed = true
+                        android.view.MotionEvent.ACTION_UP -> isPressed = false
+                        android.view.MotionEvent.ACTION_CANCEL -> isPressed = false
+                    }
+                    false
+                }
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = rememberRipple(bounded = true),
+                    onClick = onClick
+                )
+                .animateContentSize(),
+            shape = RoundedCornerShape(16.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .drawBehind {
+                        rotate(45f) {
+                            drawCircle(
+                                color = accentColor.copy(alpha = 0.1f),
+                                radius = size.width * 0.2f,
+                                center = Offset(size.width * 0.8f, size.height * 0.2f)
+                            )
+                        }
+                    }
+                    .padding(16.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text(
+                            text = animationItem.name,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = "Tap to preview",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                         )
                     }
-                }
-                .padding(16.dp)
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column {
-                    Text(
-                        text = animationItem.name,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "Tap to preview",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-                    )
-                }
 
-                IconButton(
-                    onClick = onClick,
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(accentColor.copy(alpha = 0.1f))
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.PlayArrow,
-                        contentDescription = "Play Animation",
-                        tint = accentColor
-                    )
+                    IconButton(
+                        onClick = onClick,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(accentColor.copy(alpha = 0.1f))
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.PlayArrow,
+                            contentDescription = "Play Animation",
+                            tint = accentColor
+                        )
+                    }
                 }
             }
         }
