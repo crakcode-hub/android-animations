@@ -18,9 +18,6 @@
   <a href="https://github.com/crakcode-hub/android-animations/stargazers">
     <img src="https://img.shields.io/github/stars/crakcode-hub/android-animations" alt="Stars" />
   </a>
-   <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-  </a>
 </p>
 
 ## Table of Contents 
@@ -42,19 +39,19 @@
   <tr>
     <td align="center">
       <div>
-        <img src="https://github.com/user-attachments/assets/fd07be80-0991-46ad-8582-d4dc13a5ecb2" alt="Swipe to delete" width="200" height="150" />
+        <img src="https://github.com/user-attachments/assets/fd07be80-0991-46ad-8582-d4dc13a5ecb2" alt="Swipe to delete" width="250" height="200" />
         <p>Swipe to delete</p>
       </div>
     </td>
     <td align="center">
       <div>
-        <img src="https://github.com/user-attachments/assets/c1209c91-7995-4c9d-99e6-ae709c9037b3" alt="Confetti Animation" width="200" height="200" />
+        <img src="https://github.com/user-attachments/assets/c1209c91-7995-4c9d-99e6-ae709c9037b3" alt="Confetti Animation" width="250" height="250" />
         <p>Confetti Animation</p>
       </div>
     </td>
     <td align="center">
       <div>
-        <img src="https://github.com/user-attachments/assets/070e7eee-207f-4553-a6f7-4c59d24e44a7" alt="Bouncing ball" width="200" height="200" />
+        <img src="https://github.com/user-attachments/assets/070e7eee-207f-4553-a6f7-4c59d24e44a7" alt="Bouncing ball" width="250" height="250" />
         <p>Bouncing ball</p>
       </div>
     </td>
@@ -62,19 +59,19 @@
   <tr>
     <td align="center">
       <div>
-        <img src= "https://github.com/user-attachments/assets/b3b898b8-68a1-40ff-a278-2973a7a57db0" alt="Placeholder Image" width="200" height="150"  />
+        <img src= "https://github.com/user-attachments/assets/b3b898b8-68a1-40ff-a278-2973a7a57db0" alt="Placeholder Image" width="250" height="200"  />
         <p>Wave Loading Bar</p>
       </div>
     </td>
     <td align="center">
       <div>
-        <img src="https://github.com/user-attachments/assets/ed0eb5ef-9136-4561-91bf-50258708f10d" alt="Placeholder Image" width="200" height="150" />
+        <img src="https://github.com/user-attachments/assets/ed0eb5ef-9136-4561-91bf-50258708f10d" alt="Placeholder Image" width="250" height="200" />
         <p>Carousel Slider</p>
       </div>
     </td>
     <td align="center">
       <div>
-        <img src="https://github.com/user-attachments/assets/b8536134-f284-4eb5-aff6-aab40666dad2" alt="Placeholder Image" width="200" height="150" />
+        <img src="https://github.com/user-attachments/assets/b8536134-f284-4eb5-aff6-aab40666dad2" alt="Placeholder Image" width="250" height="200" />
         <p>Card Flip</p>
       </div>
     </td>
@@ -82,19 +79,19 @@
   <tr>
     <td align="center">
       <div>
-        <img src="https://github.com/user-attachments/assets/cdc3d891-e7e6-42f2-bddc-cad28ebddd26" alt="Placeholder Image" width="200" height="150" />
+        <img src="https://github.com/user-attachments/assets/cdc3d891-e7e6-42f2-bddc-cad28ebddd26" alt="Placeholder Image" width="250" height="200" />
         <p>Emoji Progress Bar</p>
       </div>
     </td>
     <td align="center">
       <div>
-        <img src="https://github.com/user-attachments/assets/0bf147a2-0db1-49e5-acb9-7e252a5807bd" alt="Placeholder Image" width="200" height="150" />
+        <img src="https://github.com/user-attachments/assets/0bf147a2-0db1-49e5-acb9-7e252a5807bd" alt="Placeholder Image" width="250" height="200" />
         <p>Type Writer Animation</p>
       </div>
     </td>
     <td align="center">
       <div>
-        <img src="https://github.com/user-attachments/assets/429dfaec-1d44-4ef7-ac4b-9e5f7dddd84b " alt="Placeholder Image" width="200" height="150" />
+        <img src="https://github.com/user-attachments/assets/429dfaec-1d44-4ef7-ac4b-9e5f7dddd84b " alt="Placeholder Image" width="250" height="200" />
         <p>Floating Elements</p>
       </div>
     </td>
