@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.sp45.android_animations.animations.AutoImageTransition
 import com.sp45.android_animations.animations.BirthdayPopperAnimation
 import com.sp45.android_animations.animations.BouncingBallAnimation
 import com.sp45.android_animations.animations.ButtonToImage
@@ -17,6 +18,7 @@ import com.sp45.android_animations.animations.ExpandableCardAnimation
 import com.sp45.android_animations.animations.FlipCard
 import com.sp45.android_animations.animations.FloatingElements
 import com.sp45.android_animations.animations.RotatingCard
+import com.sp45.android_animations.animations.SlidingDoorAnimation
 import com.sp45.android_animations.animations.SwipeToDeleteAnimation
 import com.sp45.android_animations.animations.TypeWriterAnimation
 import com.sp45.android_animations.animations.ValueSpringAnimation
@@ -71,6 +73,8 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
                 "Emoji Progress Bar" -> EmojiProgressBar()
                 "Rotate the Card" -> RotatingCard()
                 "Button to Image" -> ButtonToImage()
+                "Image Transition" -> AutoImageTransition()
+                "Sliding Door" -> SlidingDoorAnimation()
                 else -> MainScreen(navController)
             }
         }
