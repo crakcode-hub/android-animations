@@ -29,8 +29,7 @@ fun RotatingCard() {
         targetValue = if (isFlipped) 180f else 0f,
         animationSpec = tween(durationMillis = 1000)
     )
-
-    // Monitor rotationY and update the image when rotation crosses 90 degrees
+    //updating image as well
     LaunchedEffect(rotationY) {
         if (rotationY > 90 && !showBackImage) {
             showBackImage = true

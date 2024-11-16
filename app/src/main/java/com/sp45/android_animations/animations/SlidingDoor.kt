@@ -26,22 +26,21 @@ import com.sp45.android_animations.R
 
 @Composable
 fun SlidingDoorAnimation() {
-    var widthState by remember { mutableStateOf(0f) } // Track the current width in dp
+    var widthState by remember { mutableStateOf(0f) }
     val width by animateDpAsState(
         targetValue = widthState.dp,
         animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
     )
 
-    // Handle swipe gestures
+    //swipe gestures
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
             .pointerInput(Unit) {
                 detectHorizontalDragGestures { _, dragAmount ->
-                    // Scale the drag amount to make even small drags more noticeable
-                    val dragChange = dragAmount * 5f // Adjust scaling factor as needed
-                    widthState = (widthState + dragChange).coerceIn(0f, 500f) // Limit the range from 0 to 500dp
+                    val dragChange = dragAmount * 5f
+                    widthState = (widthState + dragChange).coerceIn(0f, 500f)
                 }
             }
     ) {
@@ -54,22 +53,21 @@ fun SlidingDoorAnimation() {
         ) {
             Box(
                 modifier = Modifier
-                    .width(width) // Animate the width
+                    .width(width)
                     .height(300.dp)
-                    .clip(RoundedCornerShape(16.dp)) // Clip the image with rounded corners
+                    .clip(RoundedCornerShape(16.dp))
             ) {
-                // Image to move horizontally based on the swipe state
+
                 Image(
-                    painter = painterResource(id = R.drawable.img_2), // Replace with your image resource
+                    painter = painterResource(id = R.drawable.img_2),
                     contentDescription = "Hidden Content",
                     modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop // Ensures the image fills the space
+                    contentScale = ContentScale.Crop
                 )
             }
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Instruction Text to inform user to swipe
             Text(
                 text = "Swipe left or right to open/close the door",
                 modifier = Modifier.align(Alignment.CenterHorizontally),
