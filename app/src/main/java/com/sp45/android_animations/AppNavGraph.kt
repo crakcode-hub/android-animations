@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.sp45.android_animations.animations.BirthdayPopperAnimation
 import com.sp45.android_animations.animations.BouncingBallAnimation
+import com.sp45.android_animations.animations.ButtonToImage
 import com.sp45.android_animations.animations.CarouselSlider
 import com.sp45.android_animations.animations.ContentAnimation
 import com.sp45.android_animations.animations.EmojiProgressBar
@@ -69,6 +70,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
                 "Type Writer Animation" -> TypeWriterAnimation()
                 "Emoji Progress Bar" -> EmojiProgressBar()
                 "Rotate the Card" -> RotatingCard()
+                "Button to Image" -> ButtonToImage()
                 else -> MainScreen(navController)
             }
         }
