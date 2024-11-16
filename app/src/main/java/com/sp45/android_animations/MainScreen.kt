@@ -65,7 +65,8 @@ fun MainScreen(navController: NavController) {
         AnimationItem("Flip Card", Color(0xFF2196F3)),
         AnimationItem("Floating Elements", Color(0xFFE91E63)),
         AnimationItem("Type Writer Animation", Color(0xFF4CAF50)),
-        AnimationItem("Emoji Progress Bar", Color(0xFF3F51B5))
+        AnimationItem("Emoji Progress Bar", Color(0xFF3F51B5)),
+        AnimationItem("Rotate the Card", Color(0xFFE91E63))
     )
 
     Box(

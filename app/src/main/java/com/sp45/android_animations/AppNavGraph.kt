@@ -15,6 +15,7 @@ import com.sp45.android_animations.animations.EmojiProgressBar
 import com.sp45.android_animations.animations.ExpandableCardAnimation
 import com.sp45.android_animations.animations.FlipCard
 import com.sp45.android_animations.animations.FloatingElements
+import com.sp45.android_animations.animations.RotatingCard
 import com.sp45.android_animations.animations.SwipeToDeleteAnimation
 import com.sp45.android_animations.animations.TypeWriterAnimation
 import com.sp45.android_animations.animations.ValueSpringAnimation
@@ -67,6 +68,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
                 "Floating Elements" -> FloatingElements()
                 "Type Writer Animation" -> TypeWriterAnimation()
                 "Emoji Progress Bar" -> EmojiProgressBar()
+                "Rotate the Card" -> RotatingCard()
                 else -> MainScreen(navController)
             }
         }
