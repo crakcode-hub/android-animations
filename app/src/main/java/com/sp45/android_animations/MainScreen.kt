@@ -70,7 +70,8 @@ fun MainScreen(navController: NavController) {
         AnimationItem("Button to Image",Color(0xFFFF9800)),
         AnimationItem("Image Transition",Color(0xFF6200EE)),
         AnimationItem("Sliding Door", Color(0xFF00BCD4)),
-    )
+        AnimationItem("Expanding Rings", Color(0xFF4CAF50))
+        )
 
     Box(
         modifier = Modifier.fillMaxSize()

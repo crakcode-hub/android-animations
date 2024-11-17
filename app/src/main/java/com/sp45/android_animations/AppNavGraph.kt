@@ -15,6 +15,7 @@ import com.sp45.android_animations.animations.CarouselSlider
 import com.sp45.android_animations.animations.ContentAnimation
 import com.sp45.android_animations.animations.EmojiProgressBar
 import com.sp45.android_animations.animations.ExpandableCardAnimation
+import com.sp45.android_animations.animations.ExpandingRings
 import com.sp45.android_animations.animations.FlipCard
 import com.sp45.android_animations.animations.FloatingElements
 import com.sp45.android_animations.animations.RotatingCard
@@ -75,6 +76,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
                 "Button to Image" -> ButtonToImage()
                 "Image Transition" -> AutoImageTransition()
                 "Sliding Door" -> SlidingDoorAnimation()
+                "Expanding Rings" -> ExpandingRings()
                 else -> MainScreen(navController)
             }
         }
