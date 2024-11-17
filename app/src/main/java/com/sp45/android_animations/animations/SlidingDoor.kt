@@ -69,7 +69,7 @@ fun SlidingDoorAnimation() {
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(
-                text = "Swipe left or right to open/close the door",
+                text = "Swipe right or left to open/close the door",
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 color = Color.White
             )
