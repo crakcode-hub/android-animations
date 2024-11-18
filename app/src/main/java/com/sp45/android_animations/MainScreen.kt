@@ -69,8 +69,8 @@ fun MainScreen(navController: NavController) {
         AnimationItem("Expanding Rings", Color(0xFF4CAF50)),
         AnimationItem("Orbiting Objects", Color(0xFF3F51B5)),
         AnimationItem("Card Flipping", Color(0xFFE91E63)),
-        AnimationItem("Button to Image", Color(0xFFFF9800)),
-        AnimationItem("Image Transition", Color(0xFF6200EE)),
+        AnimationItem("Button to Image",Color(0xFFFF9800)),
+        AnimationItem("Image Transition",Color(0xFF6200EE)),
         AnimationItem("Sliding Door", Color(0xFF00BCD4)),
         AnimationItem("Text Explosion", Color(0xFFE91E63))
         )
