@@ -28,12 +28,5 @@
     <string name="crakcode">CrakCode</string>
     <string name="flip">Tap to Flip</string>
     <string name="see_front">Tap to see the front</string>
-    <string name="play_animation">Play Animation</string>
-    <string name="tap_to_preview">Tap to preview</string>
-    <string name="resources">Resources</string>
-    <string name="mentorship">Mentorship</string>
-    <string name="interview_prep">Interview Prep</string>
-    <string name="open_web_app">Open Web App</string>
-    <string name="visit_crakcode_website_for">Visit CrakCode Website for</string>
-    <string name="https_www_crakcode_in">https://www.crakcode.in/</string>
+
 </resources>
