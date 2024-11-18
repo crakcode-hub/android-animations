@@ -27,19 +27,10 @@ import com.sp45.android_animations.animations.TextExplosion
 import com.sp45.android_animations.animations.TypeWriterAnimation
 import com.sp45.android_animations.animations.ValueSpringAnimation
 import com.sp45.android_animations.animations.WaveLoadingBar
+import com.sp45.android_animations.util.WebViewScreen
 import java.net.URLDecoder
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
-
-object NavigationDestinations {
-    const val MAIN = "main"
-    const val ANIMATION = "animation/{animationName}"
-
-    fun createAnimationRoute(animationName: String): String {
-        val encodedName = URLEncoder.encode(animationName, StandardCharsets.UTF_8.toString())
-        return "animation/$encodedName"
-    }
-}
 
 @Composable
 fun AppNavGraph(navController: NavHostController = rememberNavController()) {
@@ -51,6 +42,10 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
             MainScreen(navController)
         }
 
+        composable(NavigationDestinations.WEBVIEW) {
+            WebViewScreen()
+        }
+
         composable(
             route = NavigationDestinations.ANIMATION,
             arguments = listOf(
@@ -60,7 +55,8 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
             )
         ) { backStackEntry ->
             val encodedAnimationName = backStackEntry.arguments?.getString("animationName") ?: ""
-            val animationName = URLDecoder.decode(encodedAnimationName, StandardCharsets.UTF_8.toString())
+            val animationName =
+                URLDecoder.decode(encodedAnimationName, StandardCharsets.UTF_8.toString())
 
             when (animationName) {
                 "Swipe To Delete Animation" -> SwipeToDeleteAnimation()
@@ -85,5 +81,16 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
                 else -> MainScreen(navController)
             }
         }
+    }
+}
+
+object NavigationDestinations {
+    const val MAIN = "main"
+    const val ANIMATION = "animation/{animationName}"
+    const val WEBVIEW = "webView"
+
+    fun createAnimationRoute(animationName: String): String {
+        val encodedName = URLEncoder.encode(animationName, StandardCharsets.UTF_8.toString())
+        return "animation/$encodedName"
     }
 }

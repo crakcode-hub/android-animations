@@ -1,4 +1,4 @@
-package com.sp45.android_animations
+package com.sp45.android_animations.util
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
@@ -15,14 +15,11 @@ import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -48,54 +45,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInteropFilter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import com.sp45.android_animations.R
 
-@Composable
-fun MainScreen(navController: NavController) {
-    val animations = listOf(
-        AnimationItem("Swipe To Delete Animation", Color(0xFF6200EE)),
-        AnimationItem("Bouncing Ball Animation", Color(0xFF03DAC5)),
-        AnimationItem("Value Spring Animation", Color(0xFF00BCD4)),
-        AnimationItem("Content Animation", Color(0xFFFFEB3B)),
-        AnimationItem("Carousel Slider", Color(0xFF3F51B5)),
-        AnimationItem("Expandable Card Animation", Color(0xFF4CAF50)),
-        AnimationItem("Wave Loading Bar", Color(0xFFFF9800)),
-        AnimationItem("Confetti Animation", Color(0xFF9C27B0)),
-        AnimationItem("Flip Card", Color(0xFF2196F3)),
-        AnimationItem("Floating Elements", Color(0xFFE91E63)),
-        AnimationItem("Type Writer Animation", Color(0xFF4CAF50)),
-        AnimationItem("Emoji Progress Bar", Color(0xFF3F51B5)),
-        AnimationItem("Expanding Rings", Color(0xFF4CAF50)),
-        AnimationItem("Orbiting Objects", Color(0xFF3F51B5)),
-        AnimationItem("Card Flipping", Color(0xFFE91E63)),
-        AnimationItem("Button to Image",Color(0xFFFF9800)),
-        AnimationItem("Image Transition",Color(0xFF6200EE)),
-        AnimationItem("Sliding Door", Color(0xFF00BCD4)),
-        AnimationItem("Text Explosion", Color(0xFFE91E63))
-        )
-
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        LazyColumn(
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.fillMaxSize()
-        ) {
-            items(animations.size) { index ->
-                AnimationCard(
-                    animationItem = animations[index],
-                    onClick = {
-                        val route =
-                            NavigationDestinations.createAnimationRoute(animations[index].name)
-                        navController.navigate(route)
-                    }
-                )
-            }
-        }
-    }
-}
+data class AnimationItem(
+    val name: String,
+    val color: Color
+)
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -191,7 +148,7 @@ fun AnimationCard(
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "Tap to preview",
+                            text = stringResource(R.string.tap_to_preview),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                         )
@@ -205,7 +162,7 @@ fun AnimationCard(
                     ) {
                         Icon(
                             imageVector = Icons.Default.PlayArrow,
-                            contentDescription = "Play Animation",
+                            contentDescription = stringResource(R.string.play_animation),
                             tint = accentColor
                         )
                     }
@@ -214,8 +171,3 @@ fun AnimationCard(
         }
     }
 }
-
-data class AnimationItem(
-    val name: String,
-    val color: Color
-)
