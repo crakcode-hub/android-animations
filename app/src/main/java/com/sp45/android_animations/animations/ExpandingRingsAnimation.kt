@@ -12,6 +12,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import com.sp45.android_animations.R
 
 @Composable
 fun ExpandingRings() {
@@ -58,7 +60,7 @@ fun ExpandingRings() {
             }
         }
         Text(
-            text = "Loading...",
+            text = stringResource(R.string.loading),
             fontSize = 20.sp,
             color = Color.Gray,
             textAlign = TextAlign.Center

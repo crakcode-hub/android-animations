@@ -75,7 +75,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
                 "Floating Elements" -> FloatingElements()
                 "Type Writer Animation" -> TypeWriterAnimation()
                 "Emoji Progress Bar" -> EmojiProgressBar()
-                "Card Flip" -> CardFlipping()
+                "Card Flipping" -> CardFlipping()
                 "Button to Image" -> ButtonToImage()
                 "Image Transition" -> AutoImageTransition()
                 "Sliding Door" -> SlidingDoorAnimation()

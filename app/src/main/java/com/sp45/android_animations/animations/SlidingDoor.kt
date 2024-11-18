@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import com.sp45.android_animations.R
 
 @SuppressLint("AutoboxingStateCreation")
@@ -61,7 +62,7 @@ fun SlidingDoorAnimation() {
 
                 Image(
                     painter = painterResource(id = R.drawable.img_2),
-                    contentDescription = "Hidden Content",
+                    contentDescription = stringResource(R.string.hidden_content),
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
@@ -70,7 +71,7 @@ fun SlidingDoorAnimation() {
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(
-                text = "Swipe right or left to open/close the door",
+                text = stringResource(R.string.Swipe_right_or_left_to_open_or_close_the_door),
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 color = Color.White
             )

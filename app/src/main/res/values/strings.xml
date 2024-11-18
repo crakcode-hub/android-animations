@@ -23,4 +23,10 @@
     <string name="confetti_animation">Confetti Animation</string>
     <string name="rotate_the_card">Rotate the Card</string>
     <string name="button_to_image">Button to Image</string>
+    <string name="Swipe_right_or_left_to_open_or_close_the_door">Swipe right or left to open/close the door</string>
+    <string name="hidden_content">Hidden Content</string>
+    <string name="crakcode">CrakCode</string>
+    <string name="flip">Tap to Flip</string>
+    <string name="see_front">Tap to see the front</string>
+
 </resources>

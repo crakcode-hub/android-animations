@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sp45.android_animations.R
@@ -63,7 +64,7 @@ fun CardFlipping() {
             val imageResource = if (showBackImage) R.drawable.img else R.drawable.img_2
             Image(
                 painter = painterResource(id = imageResource),
-                contentDescription = if (showBackImage) "Back of the card" else "Front of the card",
+               contentDescription = if (showBackImage) "Back of the card" else "Front of the card",
                 modifier = Modifier
                     .size(180.dp)
                     .clip(RoundedCornerShape(12.dp))
@@ -73,7 +74,7 @@ fun CardFlipping() {
         Spacer(modifier = Modifier.height(20.dp))
 
         Text(
-            text = if (isFlipped) "Tap to See Front" else "Tap to Flip",
+            text = if (isFlipped) stringResource(R.string.see_front) else stringResource(R.string.flip),
             color = Color(0xFFFFFFFF)
         )
     }

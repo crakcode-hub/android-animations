@@ -11,12 +11,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import com.sp45.android_animations.R
 import kotlin.random.Random
 
 @SuppressLint("UseOfNonLambdaOffsetOverload")
 @Composable
 fun TextExplosion() {
-    val text = "CrakCode"
+    val text = stringResource(R.string.crakcode)
     val infiniteTransition = rememberInfiniteTransition(label = "")
 
     val randomOffsets = remember {
