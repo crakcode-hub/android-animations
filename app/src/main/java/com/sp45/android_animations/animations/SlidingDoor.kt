@@ -1,5 +1,6 @@
 package com.sp45.android_animations.animations
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -10,7 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -24,15 +25,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.layout.ContentScale
 import com.sp45.android_animations.R
 
+@SuppressLint("AutoboxingStateCreation")
 @Composable
 fun SlidingDoorAnimation() {
-    var widthState by remember { mutableStateOf(0f) }
+    var widthState by remember { mutableFloatStateOf(0f) }
     val width by animateDpAsState(
         targetValue = widthState.dp,
-        animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
+        animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing), label = ""
     )
 
-    //swipe gestures
     Box(
         modifier = Modifier
             .fillMaxSize()

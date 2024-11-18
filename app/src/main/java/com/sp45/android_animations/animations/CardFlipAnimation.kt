@@ -21,15 +21,15 @@ import androidx.compose.ui.unit.dp
 import com.sp45.android_animations.R
 
 @Composable
-fun RotatingCard() {
+fun CardFlipping() {
     var isFlipped by remember { mutableStateOf(false) }
     var showBackImage by remember { mutableStateOf(false) } // State for image update
 
     val rotationY by animateFloatAsState(
         targetValue = if (isFlipped) 180f else 0f,
-        animationSpec = tween(durationMillis = 1000)
+        animationSpec = tween(durationMillis = 1000), label = ""
     )
-    //updating image as well
+
     LaunchedEffect(rotationY) {
         if (rotationY > 90 && !showBackImage) {
             showBackImage = true
@@ -82,5 +82,5 @@ fun RotatingCard() {
 @Preview
 @Composable
 fun RotatingCardPreview() {
-    RotatingCard()
+    CardFlipping()
 }

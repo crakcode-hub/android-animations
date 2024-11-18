@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun FloatingElements() {
-    val infiniteTransition = rememberInfiniteTransition()
+    val infiniteTransition = rememberInfiniteTransition(label = "")
 
     Box(
         modifier = Modifier
@@ -60,7 +60,7 @@ private fun AnimatedElement(
                 delayMillis = baseDelay
             ),
             repeatMode = RepeatMode.Reverse
-        )
+        ), label = ""
     )
 
     val rotation by infiniteTransition.animateFloat(
@@ -72,7 +72,7 @@ private fun AnimatedElement(
                 easing = LinearEasing,
                 delayMillis = baseDelay
             )
-        )
+        ), label = ""
     )
 
     val xOffset by infiniteTransition.animateFloat(
@@ -85,7 +85,7 @@ private fun AnimatedElement(
                 delayMillis = baseDelay
             ),
             repeatMode = RepeatMode.Reverse
-        )
+        ), label = ""
     )
 
     val yOffset by infiniteTransition.animateFloat(
@@ -98,7 +98,7 @@ private fun AnimatedElement(
                 delayMillis = baseDelay
             ),
             repeatMode = RepeatMode.Reverse
-        )
+        ), label = ""
     )
 
     val alpha by infiniteTransition.animateFloat(
@@ -111,7 +111,7 @@ private fun AnimatedElement(
                 delayMillis = baseDelay
             ),
             repeatMode = RepeatMode.Reverse
-        )
+        ), label = ""
     )
 
     val elementColors = listOf(

@@ -1,5 +1,6 @@
 package com.sp45.android_animations.animations
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.sp45.android_animations.R
 import kotlinx.coroutines.delay
 
+@SuppressLint("UseOfNonLambdaOffsetOverload")
 @Composable
 fun CarouselSlider() {
     val images = listOf(
@@ -59,10 +61,10 @@ fun CarouselSlider() {
 
             val isCenterImage = (i == 0)
             val scale by animateFloatAsState(
-                targetValue = if (isCenterImage) 1.2f else 0.8f
+                targetValue = if (isCenterImage) 1.2f else 0.8f, label = ""
             )
             val offsetX by animateDpAsState(
-                targetValue = (i * 100).dp
+                targetValue = (i * 100).dp, label = ""
             )
 
             Box(

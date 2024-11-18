@@ -11,6 +11,7 @@ import com.sp45.android_animations.animations.AutoImageTransition
 import com.sp45.android_animations.animations.BirthdayPopperAnimation
 import com.sp45.android_animations.animations.BouncingBallAnimation
 import com.sp45.android_animations.animations.ButtonToImage
+import com.sp45.android_animations.animations.CardFlipping
 import com.sp45.android_animations.animations.CarouselSlider
 import com.sp45.android_animations.animations.ContentAnimation
 import com.sp45.android_animations.animations.EmojiProgressBar
@@ -18,9 +19,10 @@ import com.sp45.android_animations.animations.ExpandableCardAnimation
 import com.sp45.android_animations.animations.ExpandingRings
 import com.sp45.android_animations.animations.FlipCard
 import com.sp45.android_animations.animations.FloatingElements
-import com.sp45.android_animations.animations.RotatingCard
+import com.sp45.android_animations.animations.OrbitingObjects
 import com.sp45.android_animations.animations.SlidingDoorAnimation
 import com.sp45.android_animations.animations.SwipeToDeleteAnimation
+import com.sp45.android_animations.animations.TextExplosion
 import com.sp45.android_animations.animations.TypeWriterAnimation
 import com.sp45.android_animations.animations.ValueSpringAnimation
 import com.sp45.android_animations.animations.WaveLoadingBar
@@ -72,11 +74,13 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
                 "Floating Elements" -> FloatingElements()
                 "Type Writer Animation" -> TypeWriterAnimation()
                 "Emoji Progress Bar" -> EmojiProgressBar()
-                "Rotate the Card" -> RotatingCard()
+                "Rotate the Card" -> CardFlipping()
                 "Button to Image" -> ButtonToImage()
                 "Image Transition" -> AutoImageTransition()
                 "Sliding Door" -> SlidingDoorAnimation()
                 "Expanding Rings" -> ExpandingRings()
+                "Orbiting Objects" -> OrbitingObjects()
+                "Text Explosion" -> TextExplosion()
                 else -> MainScreen(navController)
             }
         }

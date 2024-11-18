@@ -31,7 +31,7 @@ fun FlipCard() {
     var cardFlipped by remember { mutableStateOf(false) }
     val rotation by animateFloatAsState(
         targetValue = if (cardFlipped) 180f else 0f,
-        animationSpec = tween(600)
+        animationSpec = tween(600), label = ""
     )
 
     LaunchedEffect(Unit) {

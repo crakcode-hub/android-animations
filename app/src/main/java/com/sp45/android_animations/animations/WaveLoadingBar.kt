@@ -63,14 +63,14 @@ fun WaveLoadingBar() {
 
 @Composable
 fun Wave(waveColor: Color, offsetFactor: Float, modifier: Modifier = Modifier) {
-    val infiniteTransition = rememberInfiniteTransition()
+    val infiniteTransition = rememberInfiniteTransition(label = "")
     val waveAnim by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
         animationSpec = infiniteRepeatable(
             animation = tween(2000, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
-        )
+        ), label = ""
     )
 
     Canvas(modifier = modifier) {

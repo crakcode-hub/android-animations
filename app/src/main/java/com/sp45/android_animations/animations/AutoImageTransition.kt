@@ -33,7 +33,7 @@ fun AutoImageTransition(
         delay(displayTimeMillis)
         fadeAnim.animateTo(0f, animationSpec = tween(fadeDurationMillis))
 
-        currentIndex = (currentIndex + 1) % images.size //next img
+        currentIndex = (currentIndex + 1) % images.size
     }
 
     Box(

@@ -76,10 +76,10 @@ fun BirthdayPopperAnimation() {
 
 @Composable
 private fun ConfettiAnimation(initialConfetti: List<Confetti>) {
-    val animatable = remember { Animatable(0f) }
+    val animate = remember { Animatable(0f) }
 
     LaunchedEffect(Unit) {
-        animatable.animateTo(
+        animate.animateTo(
             targetValue = 1f,
             animationSpec = tween(
                 durationMillis = 3000,
@@ -90,17 +90,17 @@ private fun ConfettiAnimation(initialConfetti: List<Confetti>) {
 
     Canvas(modifier = Modifier.fillMaxSize()) {
         initialConfetti.forEach { confetti ->
-            //  gravity
-            val gravity = 1000f * animatable.value * animatable.value
 
-            // Update position
+            val gravity = 1000f * animate.value * animate.value
+
+
             val newPosition = Offset(
-                x = confetti.position.x + (confetti.velocity.x * 900f * animatable.value),
-                y = confetti.position.y + (confetti.velocity.y * 900f * animatable.value) + gravity
+                x = confetti.position.x + (confetti.velocity.x * 900f * animate.value),
+                y = confetti.position.y + (confetti.velocity.y * 900f * animate.value) + gravity
             )
 
-            // fade out
-            val alpha = 2f - animatable.value
+
+            val alpha = 2f - animate.value
 
             drawCircle(
                 color = confetti.color.copy(alpha = alpha),

@@ -21,7 +21,6 @@ import com.sp45.android_animations.R
 fun ButtonToImage() {
     var isVisible by remember { mutableStateOf(false) }
 
-    // Track rotation
     val rotation by animateFloatAsState(
         targetValue = if (isVisible) 720f else 0f,
         animationSpec = tween(durationMillis = 1200),
@@ -34,7 +33,6 @@ fun ButtonToImage() {
             .padding(20.dp),
         contentAlignment = Alignment.Center
     ) {
-        // Button Visibility
         AnimatedVisibility(
             visible = !isVisible,
             enter = fadeIn(animationSpec = tween(durationMillis = 1000)),

@@ -30,14 +30,14 @@ import androidx.compose.ui.unit.sp
 fun EmojiProgressBar() {
     val totalCheckpoints = 5
     val durationMillis = 3000
-    val infiniteTransition = rememberInfiniteTransition()
+    val infiniteTransition = rememberInfiniteTransition(label = "")
     val progressAnim by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
-        )
+        ), label = ""
     )
 
     Column(
@@ -92,7 +92,7 @@ fun ProgressBarEmojiScaling(progress: Float, totalCheckpoints: Int) {
                 val isReached = progress >= (index * checkpointFraction)
                 val scale by animateFloatAsState(
                     targetValue = if (isReached && progress <= ((index + 1) * checkpointFraction)) 1.5f else 1f,
-                    animationSpec = tween(durationMillis = 300)
+                    animationSpec = tween(durationMillis = 300), label = ""
                 )
 
                 Text(
