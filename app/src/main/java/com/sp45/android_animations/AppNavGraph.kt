@@ -1,6 +1,7 @@
 package com.sp45.android_animations
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -74,7 +75,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
                 "Floating Elements" -> FloatingElements()
                 "Type Writer Animation" -> TypeWriterAnimation()
                 "Emoji Progress Bar" -> EmojiProgressBar()
-                "Rotate the Card" -> CardFlipping()
+                "Card Flip" -> CardFlipping()
                 "Button to Image" -> ButtonToImage()
                 "Image Transition" -> AutoImageTransition()
                 "Sliding Door" -> SlidingDoorAnimation()

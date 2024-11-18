@@ -16,4 +16,11 @@
     <string name="dynamic_circle_of_roundness">Dynamic Circle of roundness : %1$s %</string>
     <string name="color_animation">Color Animation</string>
     <string name="loading">Loading...</string>
+    <string name="text_explosion">Text Explosion</string>
+    <string name="orbiting_objects">Orbiting Objects</string>
+    <string name="expanding_rings">Expanding Rings</string>
+    <string name="image_transition">Image Transition</string>
+    <string name="confetti_animation">Confetti Animation</string>
+    <string name="rotate_the_card">Rotate the Card</string>
+    <string name="button_to_image">Button to Image</string>
 </resources>
