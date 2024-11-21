@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -43,8 +44,8 @@ fun EmojiProgressBar() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -71,13 +72,13 @@ fun ProgressBarEmojiScaling(progress: Float, totalCheckpoints: Int) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(4.dp)
-                .background(Color.LightGray)
+                .background(MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f))
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth(fraction = progress)
                     .height(4.dp)
-                    .background(Color(0xFF4CAF50))
+                    .background(MaterialTheme.colorScheme.primary)
             )
         }
 

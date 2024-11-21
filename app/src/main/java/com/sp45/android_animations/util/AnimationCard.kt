@@ -25,6 +25,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -66,14 +67,6 @@ fun AnimationCard(
     var isPressed by remember { mutableStateOf(false) }
     var isVisible by remember { mutableStateOf(false) }
 
-    val elevation by animateFloatAsState(
-        targetValue = when {
-            isPressed -> 2f
-            isHovered -> 8f
-            else -> 4f
-        }
-    )
-
     val scale by animateFloatAsState(
         targetValue = if (isHovered) 1.02f else 1f
     )
@@ -86,16 +79,8 @@ fun AnimationCard(
 
     AnimatedVisibility(
         visible = isVisible,
-        enter = fadeIn(
-            animationSpec = tween(500)
-        ) + scaleIn(
-            animationSpec = tween(500)
-        ),
-        exit = fadeOut(
-            animationSpec = tween(500)
-        ) + scaleOut(
-            animationSpec = tween(500)
-        )
+        enter = fadeIn(animationSpec = tween(500)) + scaleIn(animationSpec = tween(500)),
+        exit = fadeOut(animationSpec = tween(500)) + scaleOut(animationSpec = tween(500))
     ) {
         Card(
             modifier = Modifier
@@ -103,13 +88,12 @@ fun AnimationCard(
                 .graphicsLayer {
                     scaleX = scale
                     scaleY = scale
-                    shadowElevation = elevation
                 }
                 .pointerInteropFilter {
                     when (it.action) {
                         android.view.MotionEvent.ACTION_DOWN -> isPressed = true
-                        android.view.MotionEvent.ACTION_UP -> isPressed = false
-                        android.view.MotionEvent.ACTION_CANCEL -> isPressed = false
+                        android.view.MotionEvent.ACTION_UP, android.view.MotionEvent.ACTION_CANCEL -> isPressed =
+                            false
                     }
                     false
                 }
@@ -119,7 +103,12 @@ fun AnimationCard(
                     onClick = onClick
                 )
                 .animateContentSize(),
-            shape = RoundedCornerShape(16.dp)
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+            ),
+            elevation = CardDefaults.cardElevation(2.dp)
         ) {
             Box(
                 modifier = Modifier
@@ -133,7 +122,7 @@ fun AnimationCard(
                             )
                         }
                     }
-                    .padding(16.dp)
+                    .padding(16.dp),
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -141,12 +130,14 @@ fun AnimationCard(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Column {
+
                         Text(
                             text = animationItem.name,
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Spacer(modifier = Modifier.height(4.dp))
+
                         Text(
                             text = stringResource(R.string.tap_to_preview),
                             style = MaterialTheme.typography.bodyMedium,
@@ -158,7 +149,7 @@ fun AnimationCard(
                         onClick = onClick,
                         modifier = Modifier
                             .clip(RoundedCornerShape(12.dp))
-                            .background(accentColor.copy(alpha = 0.1f))
+                            .background(accentColor.copy(alpha = 0.2f))
                     ) {
                         Icon(
                             imageVector = Icons.Default.PlayArrow,

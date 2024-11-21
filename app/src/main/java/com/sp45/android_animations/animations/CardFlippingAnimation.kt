@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -17,7 +18,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -58,7 +58,7 @@ fun FlipCard() {
             if (rotation <= 90f) {
                 Card(
                     modifier = Modifier.fillMaxSize(),
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFF4CAF50)),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary),
                     elevation = CardDefaults.cardElevation(12.dp)
                 ) {
                     Box(
@@ -71,7 +71,7 @@ fun FlipCard() {
                             text = stringResource(R.string.front),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            color = MaterialTheme.colorScheme.onPrimary
                         )
                     }
                 }
@@ -80,7 +80,7 @@ fun FlipCard() {
                     modifier = Modifier
                         .fillMaxSize()
                         .graphicsLayer { rotationY = 180f },
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFFFF5722)),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
                     elevation = CardDefaults.cardElevation(12.dp)
                 ) {
                     Box(
@@ -93,7 +93,7 @@ fun FlipCard() {
                             text = stringResource(R.string.back),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            color = MaterialTheme.colorScheme.onSecondary
                         )
                     }
                 }

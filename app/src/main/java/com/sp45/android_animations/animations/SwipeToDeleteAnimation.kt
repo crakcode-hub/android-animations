@@ -46,7 +46,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntOffset
@@ -115,10 +114,10 @@ fun SwipeAbleCard(
     val offsetX = remember { Animatable(0f) }
     val dismissThreshold = 300f
 
-    val swipeBackgroundColor = Color(0xFFB71C1C)
-    val swipeIconColor = Color.White
-    val cardContainerColor = Color(0xFFF5F5F5)
-    val cardTextColor = Color.Black
+    val swipeBackgroundColor = MaterialTheme.colorScheme.errorContainer
+    val swipeIconColor = MaterialTheme.colorScheme.onErrorContainer
+    val cardContainerColor = MaterialTheme.colorScheme.surface
+    val cardTextColor = MaterialTheme.colorScheme.onSurface
 
     val swipeProgress by remember(offsetX.value) {
         mutableFloatStateOf((-offsetX.value / dismissThreshold).coerceIn(0f, 1f))

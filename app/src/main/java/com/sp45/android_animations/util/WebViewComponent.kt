@@ -5,16 +5,14 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.sp45.android_animations.R
 
@@ -38,7 +36,12 @@ fun WebViewScreen() {
 fun WebAppText(onClick: () -> Unit) {
     val annotatedString = buildAnnotatedString {
         pushStringAnnotation(tag = "URL", annotation = "https://www.crakcode.in/")
-        withStyle(style = TextStyle(color = Color.Green, textDecoration = TextDecoration.Underline).toSpanStyle()) {
+        withStyle(
+            style = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.primary,
+                textDecoration = TextDecoration.Underline
+            ).toSpanStyle()
+        ) {
             append(stringResource(R.string.visit_crakcode_website_for))
         }
         pop()
@@ -46,9 +49,8 @@ fun WebAppText(onClick: () -> Unit) {
 
     Text(
         text = annotatedString,
-        style = TextStyle(fontSize = 16.sp),
-        modifier = Modifier.clickable {
-            onClick()
-        }
+        style = MaterialTheme.typography.bodyMedium,
+        modifier = Modifier.clickable { onClick() },
+        color = MaterialTheme.colorScheme.onBackground
     )
 }

@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -22,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -32,7 +32,7 @@ fun FloatingElements() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         repeat(6) { index ->
             AnimatedElement(
@@ -115,12 +115,12 @@ private fun AnimatedElement(
     )
 
     val elementColors = listOf(
-        Color(0xFFFF1744),
-        Color(0xFF2979FF),
-        Color(0xFF00E676),
-        Color(0xFFFFEA00),
-        Color(0xFFAA00FF),
-        Color(0xFFFF3D00)
+        MaterialTheme.colorScheme.primary,
+        MaterialTheme.colorScheme.secondary,
+        MaterialTheme.colorScheme.tertiary,
+        MaterialTheme.colorScheme.error,
+        MaterialTheme.colorScheme.inverseOnSurface,
+        MaterialTheme.colorScheme.inversePrimary
     )
 
     val isSquare = index % 2 == 0

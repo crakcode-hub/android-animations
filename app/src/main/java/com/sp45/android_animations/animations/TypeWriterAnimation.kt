@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -34,9 +35,9 @@ fun TypeWriterAnimation() {
             textStyle = TextStyle(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = MaterialTheme.colorScheme.onBackground
             ),
-            cursorColor = Color.White
+            cursorColor = MaterialTheme.colorScheme.onBackground
         )
     }
 }
@@ -45,12 +46,12 @@ fun TypeWriterAnimation() {
 @Composable
 fun TypeWriterComponent(
     text: String,
-    textStyle: TextStyle = TextStyle(
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge.copy(
         fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        color = Color.White
+        fontWeight = MaterialTheme.typography.bodyLarge.fontWeight,
+        color = MaterialTheme.colorScheme.onBackground
     ),
-    cursorColor: Color = Color.White,
+    cursorColor: Color = MaterialTheme.colorScheme.onBackground,
     cursorBlinkDuration: Int = 600,
     charAppearanceDuration: Int = 350,
     charAppearanceDelay: Int = 130

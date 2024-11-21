@@ -1,5 +1,6 @@
 package com.sp45.android_animations
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,6 +15,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.sp45.android_animations.util.AnimationCard
 import com.sp45.android_animations.util.AnimationItem
+import com.sp45.android_animations.util.CustomTopAppBar
 import com.sp45.android_animations.util.FadingTextAnimation
 import com.sp45.android_animations.util.WebAppText
 
@@ -49,45 +53,64 @@ val animations = listOf(
 )
 
 @Composable
-fun MainScreen(navController: NavController) {
-    Column {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 16.dp, 10.dp, 10.dp, 10.dp),
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Icon(
-                Icons.Default.Info,
-                contentDescription = stringResource(R.string.open_web_app),
-                tint = Color.Green,
-                modifier = Modifier.size(22.dp, 22.dp)
+fun MainScreen(
+    navController: NavController
+) {
+    Scaffold(
+        topBar = {
+            CustomTopAppBar(
+                title = "Android Animations"
             )
-            Spacer(Modifier.width(7.dp))
-            WebAppText(
-                onClick = {
-                    navController.navigate(NavigationDestinations.WEBVIEW)
+        },
+        content = { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.background)
+                    .padding(paddingValues)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 10.dp, top = 7.dp, end = 10.dp, bottom = 7.dp),
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        Icons.Default.Info,
+                        contentDescription = stringResource(R.string.open_web_app),
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(22.dp)
+                    )
+                    Spacer(Modifier.width(5.dp))
+                    WebAppText(
+                        onClick = {
+                            navController.navigate(NavigationDestinations.WEB_VIEW)
+                        }
+                    )
+                    Spacer(Modifier.width(5.dp))
+                    FadingTextAnimation()
                 }
-            )
-            Spacer(Modifier.width(8.dp))
-            FadingTextAnimation()
-        }
-        LazyColumn(
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.fillMaxSize()
-        ) {
-            items(animations.size) { index ->
-                AnimationCard(
-                    animationItem = animations[index],
-                    onClick = {
-                        val route =
-                            NavigationDestinations.createAnimationRoute(animations[index].name)
-                        navController.navigate(route)
+                LazyColumn(
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    items(
+                        animations.size,
+                    ) { index ->
+                        AnimationCard(
+                            animationItem = animations[index],
+                            onClick = {
+                                val route =
+                                    NavigationDestinations.createAnimationRoute(animations[index].name)
+                                navController.navigate(route)
+                            }
+                        )
                     }
-                )
+                }
             }
         }
-    }
+    )
 }

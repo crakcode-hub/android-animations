@@ -1,7 +1,6 @@
 package com.sp45.android_animations
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -42,7 +41,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
             MainScreen(navController)
         }
 
-        composable(NavigationDestinations.WEBVIEW) {
+        composable(NavigationDestinations.WEB_VIEW) {
             WebViewScreen()
         }
 
@@ -87,7 +86,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
 object NavigationDestinations {
     const val MAIN = "main"
     const val ANIMATION = "animation/{animationName}"
-    const val WEBVIEW = "webView"
+    const val WEB_VIEW = "webView"
 
     fun createAnimationRoute(animationName: String): String {
         val encodedName = URLEncoder.encode(animationName, StandardCharsets.UTF_8.toString())

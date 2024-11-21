@@ -7,15 +7,16 @@ import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -39,13 +40,19 @@ fun ContentAnimation() {
 
     Column(
         modifier = Modifier
-            .padding(16.dp, 100.dp)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
 
         ) {
-        Button(onClick = { isPictureOne = !isPictureOne }) {
+        Button(
+            onClick = { isPictureOne = !isPictureOne },
+            colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
+            )
+        ) {
             Text(stringResource(R.string.change_profile_picture))
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -66,6 +73,7 @@ fun ContentAnimation() {
                 modifier = Modifier
                     .size(150.dp)
                     .clip(RoundedCornerShape(16.dp))
+                    .background(MaterialTheme.colorScheme.surface)
             )
         }
     }

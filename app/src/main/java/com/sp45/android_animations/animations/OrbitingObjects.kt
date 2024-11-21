@@ -1,9 +1,17 @@
 package com.sp45.android_animations.animations
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.InfiniteTransition
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -11,18 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlin.math.cos
 import kotlin.math.sin
-
-@Composable
-fun createOrbitAnimation(speedMillis: Int, infiniteTransition: InfiniteTransition): Float {
-    return infiniteTransition.animateFloat(
-        initialValue = 0f,
-        targetValue = 360f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(speedMillis, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart
-        ), label = ""
-    ).value
-}
 
 @Composable
 fun OrbitingObjects() {
@@ -40,7 +36,9 @@ fun OrbitingObjects() {
     }
 
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
         Canvas(modifier = Modifier.fillMaxSize()) {
@@ -58,7 +56,19 @@ fun OrbitingObjects() {
                 drawCircle(color = color, radius = 10.dp.toPx(), center = androidx.compose.ui.geometry.Offset(x, y))
             }
 
-            drawCircle(color = Color.White, radius = 20.dp.toPx(), center = androidx.compose.ui.geometry.Offset(centerX, centerY))
+            drawCircle(color = Color.Gray, radius = 20.dp.toPx(), center = androidx.compose.ui.geometry.Offset(centerX, centerY))
         }
     }
+}
+
+@Composable
+fun createOrbitAnimation(speedMillis: Int, infiniteTransition: InfiniteTransition): Float {
+    return infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(speedMillis, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ), label = ""
+    ).value
 }

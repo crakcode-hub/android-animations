@@ -23,7 +23,8 @@ import androidx.compose.ui.unit.dp
 fun BouncingBallAnimation() {
     val ballPosition = remember { androidx.compose.animation.core.Animatable(0f) }
     val ballSize = 50.dp
-    val ballColor = Color(0xFFE53935)
+    val ballColor = MaterialTheme.colorScheme.primary
+    MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
     val ballScale = if (ballPosition.value > 490f) 1.2f else 1f
 
     LaunchedEffect(Unit) {

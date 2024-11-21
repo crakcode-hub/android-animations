@@ -12,7 +12,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,7 +33,9 @@ import com.sp45.android_animations.R
 @Composable
 fun ValueSpringAnimation() {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         var sliderPosition by remember { mutableFloatStateOf(0f) }
@@ -47,24 +51,38 @@ fun ValueSpringAnimation() {
                 value = sliderPosition,
                 onValueChange = { sliderPosition = it },
                 valueRange = 0f..300f,
-                steps = 5
+                steps = 5,
+                colors = SliderDefaults.colors(
+                    thumbColor = MaterialTheme.colorScheme.primary,
+                    activeTrackColor = MaterialTheme.colorScheme.primary,
+                    inactiveTrackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                )
             )
             Text(
                 text = stringResource(R.string.dynamic_circle_of_size_dp, sliderPosition.toInt()),
-                color = Color.White,
+                color = MaterialTheme.colorScheme.onBackground,
+                style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Bold
             )
             Slider(
                 value = roundnessPercent,
                 onValueChange = { roundnessPercent = it },
                 valueRange = 0f..100f,
-                steps = 5
+                steps = 5,
+                colors = SliderDefaults.colors(
+                    thumbColor = MaterialTheme.colorScheme.secondary,
+                    activeTrackColor = MaterialTheme.colorScheme.secondary,
+                    inactiveTrackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                )
             )
             Text(
                 text = stringResource(
                     R.string.dynamic_circle_of_roundness,
                     roundnessPercent.toInt()
-                ), color = Color.White, fontWeight = FontWeight.Bold
+                ),
+                color = MaterialTheme.colorScheme.onBackground,
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.Bold
             )
         }
 

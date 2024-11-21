@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -47,7 +48,7 @@ fun BirthdayPopperAnimation() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
+            .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
         Button(
@@ -65,7 +66,10 @@ fun BirthdayPopperAnimation() {
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 50.dp)
         ) {
-            Text(stringResource(R.string.pop))
+            Text(
+                text = stringResource(R.string.pop),
+                color = MaterialTheme.colorScheme.onPrimary
+            )
         }
 
         if (isPlaying) {
@@ -93,12 +97,10 @@ private fun ConfettiAnimation(initialConfetti: List<Confetti>) {
 
             val gravity = 1000f * animate.value * animate.value
 
-
             val newPosition = Offset(
                 x = confetti.position.x + (confetti.velocity.x * 900f * animate.value),
                 y = confetti.position.y + (confetti.velocity.y * 900f * animate.value) + gravity
             )
-
 
             val alpha = 2f - animate.value
 

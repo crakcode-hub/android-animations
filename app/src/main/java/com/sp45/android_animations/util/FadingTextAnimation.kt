@@ -2,14 +2,16 @@ package com.sp45.android_animations.util
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
@@ -18,8 +20,10 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun FadingTextAnimation() {
-    val messages: List<String> = listOf(stringResource(R.string.resources),
-    stringResource(R.string.mentorship), stringResource(R.string.interview_prep)
+    val messages: List<String> = listOf(
+        stringResource(R.string.resources),
+        stringResource(R.string.mentorship),
+        stringResource(R.string.interview_prep)
     )
     val fadeDuration = 1000
     val pauseDuration = 1500
@@ -33,7 +37,8 @@ fun FadingTextAnimation() {
     }
 
     Box(
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.background(MaterialTheme.colorScheme.background)
     ) {
         Crossfade(
             targetState = currentMessageIndex.intValue,
@@ -42,7 +47,7 @@ fun FadingTextAnimation() {
             Text(
                 text = messages[index],
                 style = TextStyle(fontSize = 16.sp),
-                color = Color.White
+                color = MaterialTheme.colorScheme.onBackground
             )
         }
     }

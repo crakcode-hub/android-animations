@@ -5,10 +5,14 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -21,10 +25,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sp45.android_animations.R
@@ -36,36 +39,55 @@ fun ExpandableCardAnimation() {
         targetValue = if (expanded) 250.dp else 120.dp,
         animationSpec = tween(durationMillis = 500, easing = EaseInOut), label = ""
     )
+    val cardWidth by animateDpAsState(
+        targetValue = if (expanded) 250.dp else 120.dp,
+        animationSpec = tween(durationMillis = 500, easing = EaseInOut), label = ""
+    )
 
-    Card(
+    Column(
         modifier = Modifier
-            .padding(horizontal = 20.dp, vertical = 100.dp)
-            .height(cardHeight)
             .fillMaxSize()
-            .clickable { expanded = !expanded },
-        shape = RoundedCornerShape(24.dp),
-        elevation = CardDefaults.cardElevation(8.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.Transparent
-        )
+            .background(MaterialTheme.colorScheme.background),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White)
-                .padding(16.dp)
-                .clip(RoundedCornerShape(24.dp)),
-            contentAlignment = Alignment.Center
+            modifier = Modifier,
+            contentAlignment = Alignment.Center,
         ) {
-            Text(
-                text = if (expanded) stringResource(R.string.swipe_up_to_collapse) else stringResource(
-                    R.string.swipe_down_to_expand
+            Card(
+                modifier = Modifier
+                    .height(cardHeight)
+                    .width(cardWidth)
+                    .fillMaxHeight()
+                    .clickable { expanded = !expanded },
+                shape = RoundedCornerShape(24.dp),
+                elevation = CardDefaults.cardElevation(8.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
                 ),
-                fontSize = if (expanded) 20.sp else 18.sp,
-                fontWeight = FontWeight.Bold,
-                style = MaterialTheme.typography.bodyLarge,
-                color = Color.Black
-            )
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text =
+                        if (expanded)
+                            stringResource(R.string.tap_to_collapse)
+                        else
+                            stringResource(R.string.tap_to_expand),
+                        fontSize = if (expanded) 20.sp else 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
         }
     }
 }
